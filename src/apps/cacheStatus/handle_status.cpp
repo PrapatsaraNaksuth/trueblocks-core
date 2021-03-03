@@ -21,11 +21,11 @@ bool COptions::handle_status(ostream& os) {
             "[{TIME}] [{PROVIDER}]";
 
         string_q modes;
-        modes += (status.is_testing ? "testing|" : "");
-        modes += (status.is_archive ? "" : "not ") + "archive|";
-        modes += (status.is_tracing ? "" : "not ") + "tracing|";
-        modes += (status.is_docker ? "docker|" : "")";
-        modes += (status.has_eskey ? "" : "no ") + "eskey|";
+        modes += string_q(status.is_testing ? "testing|" : "");
+        modes += string_q(status.is_archive ? "" : "not ") + "archive|";
+        modes += string_q(status.is_tracing ? "" : "not ") + "tracing|";
+        modes += string_q(status.is_docker ? "docker|" : "");
+        modes += string_q(status.has_eskey ? "" : "no ") + "eskey|";
         modes = (modes.empty() ? "" : " (" + substitute(trim(modes, '|'), "|", ", ") + ")");
         string_q report = STR_TERSE_REPORT;
         replaceAll(report, "[{MODES}]", modes);
