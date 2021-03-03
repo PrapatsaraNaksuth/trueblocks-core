@@ -22,14 +22,14 @@ bool COptions::handle_status(ostream& os) {
 
         string_q modes;
         modes += (status.is_testing ? "testing|" : "");
-        modes += (status.is_docker ? "docker|" : "");
-        modes += (status.is_archive ? "archive|" : "");
-        modes += (status.is_tracing ? "tracing|" : "");
-        // modes += (status.has_eskey ? "eskey|" : "");
+        modes += (status.is_archive ? "" : "not ") + "archive|";
+        modes += (status.is_tracing ? "" : "not ") + "tracing|";
+        modes += (status.is_docker ? "docker|" : "")";
+        modes += (status.has_eskey ? "" : "no ") + "eskey|";
         modes = (modes.empty() ? "" : " (" + substitute(trim(modes, '|'), "|", ", ") + ")");
         string_q report = STR_TERSE_REPORT;
         replaceAll(report, "[{MODES}]", modes);
-        replaceAll(report, "[{CLIENT_VER}]", status.client_version);
+        replaceAll(report, "[{CLIENT_VER}]", (status.client_version.empty() ? "--no rpc server--" : status.client_version));
         replaceAll(report, "[{TB_VER}]", status.trueblocks_version);
         replaceAll(report, "[{CACHE_PATH}]", status.cache_path);
         replaceAll(report, "[{INDEX_PATH}]", status.index_path);
