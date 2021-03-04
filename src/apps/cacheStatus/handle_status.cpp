@@ -29,7 +29,8 @@ bool COptions::handle_status(ostream& os) {
         modes = (modes.empty() ? "" : " (" + substitute(trim(modes, '|'), "|", ", ") + ")");
         string_q report = STR_TERSE_REPORT;
         replaceAll(report, "[{MODES}]", modes);
-        replaceAll(report, "[{CLIENT_VER}]", (status.client_version.empty() ? "--no rpc server--" : status.client_version));
+        replaceAll(report, "[{CLIENT_VER}]",
+                   (status.client_version.empty() ? "--no rpc server--" : status.client_version));
         replaceAll(report, "[{TB_VER}]", status.trueblocks_version);
         replaceAll(report, "[{CACHE_PATH}]", status.cache_path);
         replaceAll(report, "[{INDEX_PATH}]", status.index_path);
