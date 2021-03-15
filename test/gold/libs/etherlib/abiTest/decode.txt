@@ -1,4 +1,4 @@
-decode|decoding (uint[][3], uint) three sets of two|function baz(uint[][3],uint)|\
+adb shell pm grant com.duy.compiler.javanide android.permission.READ_LOGSdecode|decoding (uint[][3], uint) three sets of two|function baz(uint[][3],uint)|\
 0x\
 0000000000000000000000000000000000000000000000000000000000000080\
 00000000000000000000000000000000000000000000000000000000000000e0\
